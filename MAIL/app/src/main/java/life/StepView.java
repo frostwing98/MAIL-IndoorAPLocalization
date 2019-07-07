@@ -18,9 +18,11 @@ import android.view.View;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 import life.Jama.Polyfit;
 import life.Jama.Polyval;
@@ -40,7 +42,6 @@ public class StepView extends View {
     private Bitmap mBitmap;
     private ArrayList<Circle> circlelist=new ArrayList<>();
 //    private double wifisiglevel=0.0;
-    private ArrayList<Double> siglevellist=new ArrayList<>();
     private List<PointF> mPointList = new ArrayList<>();
     private ArrayList<Map<String,Double>> resultmaplist=new ArrayList<>();
     public StepView(Context context) {
@@ -98,7 +99,7 @@ public class StepView extends View {
             for(Circle c:circlelist){
                 Paint cPaint=new Paint();
                 cPaint.setColor(Color.RED);
-                cPaint.setAlpha(128);
+                cPaint.setAlpha(32);
                 cPaint.setAntiAlias(true);
                 cPaint.setStyle(Paint.Style.FILL);
                 Paint txtPaint=new Paint();
@@ -156,13 +157,18 @@ public class StepView extends View {
             return;
         }
         HashMap<String,ArrayList<Double>> tempmap=new HashMap<>();
-        for(String s:resultmaplist.get(0).keySet()){
-            tempmap.put(s,new ArrayList<Double>());
-            tempmap.get(s).add(resultmaplist.get(0).get(s));
+        Set<String> wifinameset=new HashSet<>();
+        for(Map<String,Double> map:resultmaplist){
+            for(String wifiname:map.keySet()){
+                wifinameset.add(wifiname);
+            }
         }
-        if(resultmaplist.size()>=2){
-            for(int i=1;i<resultmaplist.size();i++){
-                for(String wifiname:resultmaplist.get(0).keySet()){
+        for(String s:wifinameset){
+            tempmap.put(s,new ArrayList<Double>());
+        }
+        if(resultmaplist.size()>=1){
+            for(int i=0;i<resultmaplist.size();i++){
+                for(String wifiname:wifinameset){
                     if(resultmaplist.get(i).get(wifiname)==null)
                         tempmap.get(wifiname).add(0.0);
                     else
@@ -180,7 +186,6 @@ public class StepView extends View {
             System.out.println(c.x+" "+c.y+" "+c.r);
 
         }
-
     }
     public Circle calculatePosition(ArrayList<Double> list){
         System.out.println("INTERESTING: ");
@@ -195,9 +200,15 @@ public class StepView extends View {
         }
         Polyfit polyfit = null;
         Polyval polyval;
+        double [] ysmooth=new double[list.size()];
+        ysmooth[0]=y[0];
+        ysmooth[y.length-1]=y[y.length-1];
+        for(int i=1;i<list.size()-1;i++){
+            ysmooth[i]=(y[i-1]+y[i]+y[i+1])/3;
+        }
         double[] fitted=new double[list.size()];
         try {
-            polyfit = new Polyfit(x, y, 3);
+            polyfit = new Polyfit(x, ysmooth, 3);
             polyval = new Polyval(x, polyfit);
             for (int i = 0; i <= polyval.getYout().length - 1;i++){
                 BigDecimal bd = new BigDecimal(polyval.getYout()[i]);
@@ -222,7 +233,7 @@ public class StepView extends View {
         int rightbound=maxindex+1;
         int i=0;
         while(leftbound>=0){
-            if(Math.abs(x[leftbound]-x[maxindex])<=2.5){
+            if(Math.abs(ysmooth[leftbound]-ysmooth[maxindex])<=2.5){
                 leftbound--;
             }else{
                 break;
@@ -230,7 +241,7 @@ public class StepView extends View {
         }
         leftbound++;
         while(rightbound<list.size()){
-            if(Math.abs(x[rightbound]-x[maxindex])<=2.5){
+            if(Math.abs(ysmooth[rightbound]-ysmooth[maxindex])<=2.5){
                 rightbound++;
             }else{
                 break;

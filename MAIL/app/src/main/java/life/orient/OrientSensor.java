@@ -81,7 +81,7 @@ public class OrientSensor implements SensorEventListener {
         SensorManager.getRotationMatrix(R, null, accelerometerValues, magneticValues);
         SensorManager.getOrientation(R, values);
         int degree = (int) Math.toDegrees(values[0]);//旋转角度
-        degree=degree/5*5;
+        degree=degree/3*3;
         if (degree < 0) {
             degree += 360;
         }

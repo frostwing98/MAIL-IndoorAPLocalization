@@ -1,32 +1,20 @@
 	# 1. 描述
 
-本项目是移动通讯安全的课程项目。基于github上记步的demo实现。
+本项目是移动通讯安全的课程项目。基于github上记步的demo实现，去除了加速度传感器部分，用手动记步代替。添加了wifimanager与三次多项式回归模块。
 
-本项目添加了wifimanager模块，记录每一步对应wifi的信号强度并按颜色标记。
+使用方法：
+
+校正手机指南针，每走一步手动record，如果地磁传感器与实际方向有偏差（which常常发生）可以手动校正，稍微转动手机到合适方向再record。
+
+最后点击draw，周围的wifi便会显示在周围。
+
+这个项目原来示范的时候可以做到multiple-decimeter的精度，但由于源码丢失，这个版本是后来根据记忆完成的。也许有一些偏差
 
 注意：当前版本的wifi名称是硬编码的，运行前需要手动指定待测wifi名。
 
-使用方法与参数：
+注意2: 当前版本的app不甚稳定——在draw之后需要退出再入才可以继续。恢复的功能正在开发中。
 
->Wifi名
->
->在Java.Life.StepView.java的autoaddpoint中（122行），修改“if(scanResult.SSID.equals("rabbi1"))”中的wifi名称rabbi1,
->
->方向传感器敏感度
->
->在Java.Life.Orient.OrientSensor.java 的onSensorChanged 中，修改degree=degree*5/5，修改方向角跳动的步长
->
->在同文件的RegisterOrient中修改SensorManager.SENSOR_DELAY_GAME的参数，修改传感器获取信息的频率
 
-注意：app启动之后立刻走动可能因为没有wifi信息导致退出，请等5s。
-
-注意：一开始可能一直显示为青色， 一般最多等20-30s即可出结果。
-
-TODO：下一步添加分析数据并画出大概范围的功能。
-
-TODO：wifi名字以外，添加根据硬件id记录的功能。
-
-TODO：提供建议之后让用户手动重新指定开始位置的功能。
 
 ---
 # 2. 以下是原作者的描述内容。

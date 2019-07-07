@@ -2,6 +2,15 @@
 <items version="2" >
 
     <item
+        is-multidex="false"
+        jar="/home/allen/.android/build-cache/e0b00c8bbc8ce289e79366460066b72cdf30bc51/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/home/allen/Github/MAIL-IndoorAPLocalization/MAIL/app/build/intermediates/pre-dexed/debug/classes_fe74e6f4f03ed7c236e3430f430fb30414f535ed.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="/home/allen/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/23.1.1/8d680ba5a623724d1fb0e81c36a790f023a6cede/support-annotations-23.1.1.jar"
         jumboMode="true"
@@ -18,6 +27,24 @@
         revision="25.0.2"
         sha1="b15d2b29fd35d4d3977ec987a5e4f1edf98e192c">
         <dex dex="/home/allen/Github/StepOrient/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_a8b29a9eccc01acfc12e08b1d578467f99b5aa8f/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/allen/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/23.1.1/8d680ba5a623724d1fb0e81c36a790f023a6cede/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/home/allen/Github/MAIL-IndoorAPLocalization/MAIL/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1_6d83405446afe25da994e5b3656b0b63bd2af059.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/allen/.android/build-cache/e0b00c8bbc8ce289e79366460066b72cdf30bc51/output/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/home/allen/Github/MAIL-IndoorAPLocalization/MAIL/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1_33705bab160dd2cadf3b93b89eb46cd31ebce550.jar" />
     </item>
     <item
         is-multidex="true"
@@ -45,6 +72,15 @@
         revision="25.0.2"
         sha1="5c5699834e9722f1c288fea2de82725d078ba127">
         <dex dex="/home/allen/Github/StepOrient/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_53698fa410fb1c1d5ad6e2dae5e2b7b8e33e39e8/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/allen/.android/build-cache/765482bf298761661bde6b0133ad6cb328f8abbd/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/home/allen/Github/MAIL-IndoorAPLocalization/MAIL/app/build/intermediates/pre-dexed/debug/classes_53698fa410fb1c1d5ad6e2dae5e2b7b8e33e39e8.jar" />
     </item>
     <item
         is-multidex="true"

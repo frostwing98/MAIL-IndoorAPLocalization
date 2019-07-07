@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements StepSensorBase.St
 
     private StepSensorBase mStepSensor; // 计步传感器
     private OrientSensor mOrientSensor; // 方向传感器
-    private int mStepLen = 20; // 步长
+    private int mStepLen = 50; // 步长
     private List<ScanResult> results=new ArrayList<>();
     private ArrayList<String> arrayList = new ArrayList<>();
     private WifiManager wifiManager;

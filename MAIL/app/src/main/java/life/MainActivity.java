@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements StepSensorBase.St
     private ArrayAdapter adapter;
     private static final String RC_LOCATION = "1";
 
-    private Map<String,Double> resultmap=new HashMap<>();
+    private static Map<String,Double> resultmap=new HashMap<>();
     @Override
     public void Step(int len) {
         //  计步回调
@@ -164,9 +164,15 @@ public class MainActivity extends AppCompatActivity implements StepSensorBase.St
     }
     private void scanSuccess() {
         results = wifiManager.getScanResults();
+        int count=0;
         HashMap<String,Double> map=new HashMap<>();
         for(ScanResult sc:results){
+            if(count>8){
+                break;
+            }
             map.put(sc.SSID,(double)sc.level);
+            count++;
+
         }
         this.resultmap=map;
         System.out.println(results.size());

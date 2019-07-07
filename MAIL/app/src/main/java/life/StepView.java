@@ -39,11 +39,11 @@ public class StepView extends View {
     private float mCurX = 200;
     private float mCurY = 200;
     private int mOrient;
-    private Bitmap mBitmap;
-    private ArrayList<Circle> circlelist=new ArrayList<>();
+    private static Bitmap mBitmap;
+    private static ArrayList<Circle> circlelist=new ArrayList<>();
 //    private double wifisiglevel=0.0;
-    private List<PointF> mPointList = new ArrayList<>();
-    private ArrayList<Map<String,Double>> resultmaplist=new ArrayList<>();
+    private static List<PointF> mPointList = new ArrayList<>();
+    private static ArrayList<Map<String,Double>> resultmaplist=new ArrayList<>();
     public StepView(Context context) {
         this(context, null);
     }
